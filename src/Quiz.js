@@ -6,7 +6,15 @@ class Quiz extends Component{
 			<div className="quiz">
 				<div className="quiz-content">
 					<p className="question">What is the SUM of <span className="text-info">5</span> + <span className="text-info">2 </span> ?</p>
-					<div className="fields"></div>
+					<div className="options">
+						<div className="fields"><div className="field-block">10</div></div>
+						<div className="fields"><div className="field-block">10</div></div>
+						<div className="fields"><div className="field-block">10</div></div>
+						<div className="fields"><div className="field-block">10</div></div>
+					</div>
+				</div>
+				<div className="play-again">
+					<a className="button">Play Again</a>
 				</div>
 			</div>
 		);
