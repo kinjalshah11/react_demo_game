@@ -25,23 +25,39 @@ class Quiz extends Component{
 	}
 
 	rendomOptions(sum){
-		let  resullt = sum;
+		let  result = sum;
 		let resultArray = [];
+		let randomNumberArray = [];
 
-		let addSub = this.rendomNumber(0,1)
-		if (addSub === 1){
-
-		}else{
-
+		while(randomNumberArray.length <= 3){
+			let randomNumber = this.rendomNumber(1,19);
+			if (randomNumberArray.indexOf(randomNumber) > -1) continue;
+			randomNumberArray.push(randomNumber)
 		}
+
+		console.log("jsadhjkas",randomNumberArray);
+
+		for (let i=0; i<3; i++){
+			let addSub = this.rendomNumber(0,1)
+			if (addSub === 1){
+				result += randomNumberArray[i];
+				resultArray.push(result);
+			}else{
+				result -= randomNumberArray[i]
+				resultArray.push(result);
+			}
+		}
+
 		return resultArray;
 	}
 
 	playGame(){
 		let field1 = this.rendomNumber(20,50);
-		let field2 = this.rendomNumber(50,100);
+		let field2 = this.rendomNumber(20,50);
 		let answer = field1 + field2;
 		let resultArray = this.rendomOptions(answer);
+		resultArray.push(answer);
+		resultArray.sort(function(a,b){ return 0.5 - Math.random()});
 		let riddle = {
 			resultArray: resultArray,
 			field1: field1,
