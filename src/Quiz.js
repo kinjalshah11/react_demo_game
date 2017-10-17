@@ -6,18 +6,32 @@ class Quiz extends Component{
 		super(props);
 
 		let riddle = this.playGame();
+		let correct = false;
+		let gameover = false;
 
-		this.state = {riddle}
+		this.state = {riddle, correct, gameover};
 		this.renderOptions = this.renderOptions.bind(this);
+		this.checkResults = this.checkResults.bind(this);
 	}
 	renderOptions(){
 		return(
 			<div className="options">
 			{this.state.riddle.resultArray.map((option,i) =>
-				<QuizOptions option={option} key={i}/>
+				<QuizOptions option={option} key={i} checkResults={(option) => this.checkResults(option)}/>
 			)}
 			</div>
 		);
+	}
+
+	checkResults(option){
+		console.log('adsasddnj' + option);
+		if(this.state.riddle.answer === option){
+			console.log('correct answer');
+			this.setState({correct: true, gameover: true});
+		}else {
+			console.log('wrong answer');
+			this.setState({correct: false, gameover: true});
+		}
 	}
 
 	rendomNumber(min,max){
@@ -75,6 +89,8 @@ class Quiz extends Component{
 					<p className="question">What is the SUM of <span className="text-info">{this.state.riddle.field1}</span> + <span className="text-info">{this.state.riddle.field2}</span> ?</p>
 					{this.renderOptions()}
 				</div>
+				correct : {this.state.correct ? "True" : "False"} <br/>
+				gameover : {this.state.gameover ? "True" : "False"} 
 				<div className="play-again">
 					<a className="button">Play Again</a>
 				</div>
