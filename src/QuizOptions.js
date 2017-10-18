@@ -15,7 +15,7 @@ class QuizOptions extends Component{
 
 	render(){
 		return(
-			<div className="fields" onClick={this.callParentCheckOption}>
+			<div className="fields animated zoomIn" onClick={this.callParentCheckOption}>
 				<div className="field-block">{this.props.option}</div>
 			</div>
 		);
